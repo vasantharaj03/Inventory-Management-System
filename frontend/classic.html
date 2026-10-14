@@ -192,7 +192,7 @@ const ic=n=>`<svg class="i" viewBox="0 0 24 24">${IC[n]}</svg>`;
 const NAV=[['dashboard','grid','Dashboard'],['items','box','Inventory'],['products','list','Products'],['sales','cart','Sales orders'],['purchases','truck','Purchase orders'],['contacts','users','Customers & suppliers'],['analytics','chart','Analytics'],['movements','swap','Stock movements'],['users','shield','Users',1],['audit','clock','Audit log',1]];
 let TH=localStorage.getItem('stk_th')||'dark';document.documentElement.dataset.theme=TH;
 function renderNav(){document.querySelectorAll('.logo i').forEach(i=>i.innerHTML=ic('box'));
- $('#nav').innerHTML=NAV.filter(n=>!n[3]||(ME&&ME.role==='admin')).map(n=>`<button data-v="${n[0]}" class="${n[0]===view?'on':''}">${ic(n[1])}${n[2]}</button>`).join('');
+ $('#nav').innerHTML=NAV.filter(n=>!n[3]||(ME&&ME.role==='admin')).map(n=>`<button data-v="${n[0]}" class="${n[0]===view?'on':''}">${ic(n[1])}${n[2]}</button>`).join('')+`<a href="/" style="display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:11px;color:var(--mute);text-decoration:none;font-weight:600">${ic('grid')}Back to new UI (React)</a>`;
  document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
  $('.foot').innerHTML=`<button onclick="toggleTheme()">${ic(TH==='dark'?'sun':'moon')}${TH==='dark'?'Light mode':'Dark mode'}</button><button onclick="openPw()">${ic('key')}Change password</button><button onclick="logout()">${ic('logout')}Log out</button>`}
 function toggleTheme(){TH=TH==='dark'?'light':'dark';localStorage.setItem('stk_th',TH);document.documentElement.dataset.theme=TH;renderNav()}
@@ -248,4 +248,4 @@ const ring=(g,c='',z='')=>`<div class="ringw ${z}"><svg viewBox="0 0 120 120">${
 const radar=(n,mx,c)=>{const k=mx?n/mx:0,m=[1,.82,.95,.78,1,.86],P=(r,i)=>`${(60+r*Math.cos(i*Math.PI/3-Math.PI/2)).toFixed(1)},${(60+r*Math.sin(i*Math.PI/3-Math.PI/2)).toFixed(1)}`,I=[0,1,2,3,4,5];return `<div class="rad" style="color:${c}"><svg viewBox="0 0 120 120"><polygon class="hx" points="${I.map(i=>P(52,i)).join(' ')}"/><polygon class="hx" points="${I.map(i=>P(26,i)).join(' ')}"/><polygon points="${I.map(i=>P(52*(.15+.85*k)*m[i],i)).join(' ')}" fill="${c}" fill-opacity=".3" stroke="${c}" stroke-width="2"/></svg></div>`};
 function imgData(f=$('#pimg').files[0]){return new Promise(res=>{if(!f)return res(null);const im=new Image();im.onload=()=>{const k=Math.min(1,480/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.82))};im.onerror=()=>res(null);im.src=URL.createObjectURL(f)})}
 setAuth();if(TOKEN)boot();
-</script></body></html>
+</script><script src="/static/fx.js"></script></body></html>
