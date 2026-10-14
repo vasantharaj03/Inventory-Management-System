@@ -1,0 +1,10 @@
+{
+  "name": "stockroom-frontend",
+  "version": "1.0.0",
+  "description": "Stockroom Inventory Frontend (Zero-build browser React, served directly by FastAPI)",
+  "private": true,
+  "scripts": {
+    "start": "echo Frontend is served by FastAPI at http://localhost:8000",
+    "dev": "echo Frontend is served by FastAPI at http://localhost:8000"
+  }
+}

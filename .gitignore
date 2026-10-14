@@ -1,0 +1,18 @@
+# Environment configuration (Contains private secrets - DO NOT COMMIT)
+.env
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
