@@ -15,6 +15,7 @@ except ImportError:
 
 DB_URL = os.getenv("DATABASE_URL", "mysql+pymysql://root:password@localhost:3306/inventory_db")
 engine = create_engine(DB_URL, pool_pre_ping=True)
+
 app = FastAPI(title="Inventory API", version="1.0")
 FRONTEND = os.path.join(os.path.dirname(__file__), "..", "frontend")
 
